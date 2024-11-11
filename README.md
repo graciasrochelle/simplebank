@@ -53,3 +53,5 @@ $ migrate create -ext sql -dir db/migration -seq init_schema
  `$ go mod init simplebank`
 
  `$ go mod tidy`
+
+ `$ git remote set-url origin https://<token>@github.com/<username>/<repo>`
