@@ -15,8 +15,11 @@ $ docker exec -it golang-project psql -U root simple_bank
 ```
 ## Makefile
 ` $ make dropdb`
+
 ` $ make createdb`
+
 ` $ history | grep "docker run"`
+
 ## Migrate db schema
 ```
 $ migrate create -ext sql -dir db/migration -seq init_schema
@@ -26,6 +29,9 @@ $ migrate create -ext sql -dir db/migration -seq init_schema
 > only supports postgres
  
  `$ make sqlc`
+
  ## Misc commands
+ 
  `$ go mod init simplebank`
+
  `$ go mod tidy`
