@@ -17,15 +17,18 @@ func main() {
 		log.Fatal("cannot connect to db:", err)
 	}
 
-	conn, err := sql.Open(config.DB_DRIVER, config.DB_SOURCE)
+	conn, err := sql.Open(config.DbDriver, config.DbSource)
 	if err != nil {
 		log.Fatal("cannot connect to db:", err)
 	}
 
 	store := db.NewStore(conn)
-	server := api.NewServer(store)
+	server, err := api.NewServer(config, store)
+	if err != nil {
+		log.Fatal("cannot create server:", err)
+	}
 
-	err = server.Start(config.SERVER_ADDRESS)
+	err = server.Start(config.ServerAddress)
 	if err != nil {
 		log.Fatal("cannot start server:", err)
 	}
