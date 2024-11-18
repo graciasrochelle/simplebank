@@ -35,3 +35,9 @@ $ migrate create -ext sql -dir db/migration -seq init_schema
  `$ go mod init simplebank`
 
  `$ go mod tidy`
+
+ ## Docker file
+
+`$ docker build -t simplebank:latest .`
+
+`$ docker run --name simplebank --network bank-network -e GIN_MODE=release -e DB_SOURCE="postgres://root:secret@golang-project:5432/simple_bank?sslmode=disable" -p 8080:8080 simplebank:latest`
