@@ -4,13 +4,13 @@ network:
 	docker network create bank-network
 
 postgres:
-	docker run --name golang-project --network bank-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:latest
+	docker run --name postgres --network bank-network -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=secret -d postgres:latest
 
 createdb:
-	docker exec -it golang-project createdb --username=root --owner=root simple_bank
+	docker exec -it postgres createdb --username=root --owner=root simple_bank
 
 dropdb:
-	docker exec -it golang-project dropdb simple_bank
+	docker exec -it postgres dropdb simple_bank
 
 migrateup:
 	migrate -path db/migration -database "$(DB_URL)" -verbose up

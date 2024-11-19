@@ -40,4 +40,12 @@ $ migrate create -ext sql -dir db/migration -seq init_schema
 
 `$ docker build -t simplebank:latest .`
 
+`$ docker run --rm -it --entrypoint bash simplebank:latest `
+
 `$ docker run --name simplebank --network bank-network -e GIN_MODE=release -e DB_SOURCE="postgres://root:secret@golang-project:5432/simple_bank?sslmode=disable" -p 8080:8080 simplebank:latest`
+
+`$ docker compose up`
+
+`$ docker compose down`
+
+`$ docker rmi simplabank_api`
